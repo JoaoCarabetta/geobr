@@ -236,28 +236,16 @@ def get_metadata(geo, data_type, year):
 
 
 def list_geobr_functions():
-    """ Prints available functions, according to latest README.md file
+    """ Prints available function with repective geographies, years and source according to latest README.md file
+    
+        Example:
+            Function: read_immediate_region
+            Geographies available: Immediate region
+            Years available: 2017
+            Source: IBGE
+    """
 
-        Parameters
-        ----------
-        None
-
-        Returns
-        -------
-        Printing of each function, its available geographies, years available and source
-
-        Example output
-        ------------------------------
-        Function: read_immediate_region
-        Geographies available: Immediate region
-        Years available: 2017
-        Source: IBGE
-        ------------------------------
-
-        """
-
-    df = pd.read_html('https://github.com/ipeaGIT/geobr/blob/master/README.md')
-    df = df[1]
+    df = pd.read_html('https://github.com/ipeaGIT/geobr/blob/master/README.md')[1]
     for i in range(len(df)):
         for each in df.columns:
             print(f'{each}: {df.loc[i, each]}')
