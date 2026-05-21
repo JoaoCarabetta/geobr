@@ -96,6 +96,29 @@ mun = read_municipality(code_muni="all", year=2018)
 More examples
 [here](https://github.com/ipeaGIT/geobr/tree/master/python-package/examples)
 
+## MCP server (AI assistants)
+
+The standalone [**geobr-mcp**](mcp-server/) package exposes geobr data to MCP clients (Cursor, Claude Desktop, etc.) via read-only DuckDB SQL.
+
+```bash
+uvx geobr-mcp
+```
+
+Add to `.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "geobr": {
+      "command": "uvx",
+      "args": ["geobr-mcp"]
+    }
+  }
+}
+```
+
+See [mcp-server/README.md](mcp-server/README.md) for resources, tools, and example queries.
+
 # Available datasets:
 
 You can check all the data sets available with \``list_geobr()`
